@@ -1,0 +1,947 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZippZapp - Ride Sharing Made Easy</title>
+  <meta name="google-site-verification" content="iYSyMGYFSxEsc5JD-hKhfYJgXfPbm0HefK-nX2OiAL4" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQBRQ9CDZ6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SQBRQ9CDZ6');
+  </script>
+  
+  <style>
+    .suggestions {
+  padding: 50px 20px;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.suggestions h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.suggestion-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+}
+
+.suggestion-card:hover {
+  transform: translateY(-5px);
+}
+
+.suggestion-card img {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.suggestion-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.suggestion-card p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+.offer-ride {
+  padding: 60px 20px;
+  background: #f5faff;
+}
+
+.offer-ride-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.offer-ride-image {
+  flex: 1;
+  text-align: center;
+}
+
+.offer-ride-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.offer-ride-content {
+  flex: 1;
+}
+
+.offer-ride-content h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.offer-ride-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #444;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.offer-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #00bcd4;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.offer-btn:hover {
+  background: #0097a7;
+}
+    .request-ride {
+  padding: 60px 20px;
+  background: #fff;
+}
+
+.request-ride-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.request-ride-content {
+  flex: 1;
+}
+
+.request-ride-content h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.request-ride-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #444;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.request-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #4CAF50;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.request-btn:hover {
+  background: #388E3C;
+}
+
+.request-ride-image {
+  flex: 1;
+  text-align: center;
+}
+
+.request-ride-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+.details-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: #00bcd4;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.details-btn:hover {
+  background: #0097a7;
+}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(90deg, #00bcd4, #004d40);
+      color: white;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.8rem;
+    }
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 3rem 5%;
+      background: white;
+    }
+    .hero-text {
+      flex: 1;
+      min-width: 280px;
+    }
+    .hero-text h2 {
+      font-size: 2.5rem;
+      color: #004d40;
+      margin-bottom: 1rem;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    .btn-primary {
+      background: #00bcd4;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: #0097a7;
+      transform: scale(1.05);
+    }
+    .hero-animation {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      justify-content: center;
+    }
+    section {
+      padding: 3rem 5%;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    .feature-card h3 {
+      margin-top: 1rem;
+      color: #004d40;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      align-items: center;
+    }
+    .step {
+      text-align: center;
+    }
+    .step h4 {
+      margin-top: 1rem;
+      color: #004d40;
+    }
+    
+    .hero-earn {
+  background: #0c0c1d;
+  color: white;
+  padding: 60px 20px;
+}
+
+.hero-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.hero-image {
+  flex: 1;
+}
+
+.hero-image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  color: #ddd;
+}
+
+.hero-btn {
+  padding: 12px 25px;
+  background: #4CAF50;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.hero-btn:hover {
+  background: #388E3C;
+}
+
+.benefits {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  background: #f8f9fa;
+  padding: 50px 20px;
+}
+
+.benefit {
+  flex: 1 1 250px;
+  text-align: center;
+  padding: 20px;
+}
+
+.benefit img {
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.benefit h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.benefit p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+}
+    footer {
+      background: #004d40;
+      color: white;
+      padding: 2rem 5%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    footer h5 {
+      margin-bottom: 1rem;
+    }
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    @media(max-width:768px) {
+      .hero {
+        flex-direction: column;
+      }
+    }
+    .calculator {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f1f1f1;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 18px;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+  <div style="display: flex; align-items: center; gap: 10px;">
+    
+    <h1 style="margin: 0;">ZippZapp</h1>
+  </div>
+  <nav>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBaBSKtLD_MwSBvwKAJY_j1B8Rl2MIhjQ2bfUTcGfjI7iJwg/viewform?usp=header">Join</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4xLgUWjfQgNcHTftmmmuYrKkOpXgw4-7FKj2kcYGd62u5Bw/viewform?usp=sharing&ouid=111189369859071576024">Become Partner</a>
+  </nav>
+</header>
+  <section class="hero"> 
+  <div class="hero-text">
+  <h2 style="text-align:center; color:#004d40; margin-bottom:2rem;">India's Smartest Ride Share</h2>
+    </div>
+  </section>
+  
+<section class="suggestions">
+  <h2>Suggestions</h2>
+  <div class="suggestions-grid">
+    
+    <!-- Suggestion 1 -->
+    <div class="suggestion-card">
+      <img src="https://t4.ftcdn.net/jpg/01/75/41/99/360_F_175419966_DvmsbkV48YXpByUUcbFamnYq7KEvDTuG.jpg" alt="Offer Ride" />
+       <h3>Offer Ride</h3>
+      <p>Fill your car Empty seats with people going same destination or direction.</p>
+      <a href="#offer-ride" class="details-btn">Details</a>
+</div>
+
+    <!-- Suggestion 2 -->
+    <div class="suggestion-card">
+      <img src="https://www.shutterstock.com/image-vector/hitchhiking-road-travel-man-big-600nw-320068409.jpg" alt="Request Ride" />
+       <h3>Request Ride</h3>
+      <p>Post your ride we match perfect ride for you.</p>
+      <a href="#request-ride" class="details-btn">Details</a>
+    </div>
+
+    <!-- Suggestion 3 -->
+    <div class="suggestion-card">
+      <img src="https://media.istockphoto.com/id/1320275763/vector/man-receiving-notifications-bell-alert-notification-concept-vector-illustration-flat-cartoon.jpg?s=612x612&w=0&k=20&c=WesHyx6iSr1285HqVYLIegKcMvrkQMYw93G6GUjTrsc=" alt="Available Ride" />
+       <h3>Avaible Ride</h3>
+      <p>Check pre-posted rides and plan your trip according to it.</p>
+     <a href="https://docs.google.com/spreadsheets/d/1U7FIiF8MvGT4VLg3gYGskY_YTX1L_HRi9xuxTdEuKyA/edit?usp=sharing" class="details-btn">check</a>
+</div>
+
+    <!-- Suggestion 4 -->
+    <div class="suggestion-card">
+      <img src="https://www.shutterstock.com/image-vector/calculator-floating-cartoon-vector-icon-600nw-2341876311.jpg" alt="Calculator" />
+      <h3>Calculator</h3>
+      <p>Cost calculator for passangers Earning calculator for owners.</p>
+      <a href="#calculator" class="details-btn">Details</a>
+</div>
+
+    <!-- Suggestion 5 -->
+    <div class="suggestion-card">
+      <img src="https://www.shutterstock.com/shutterstock/videos/1104294257/thumb/6.jpg?ip=x480" alt="Become Partner" />
+      <h3>Become Partner</h3>
+      <p>Become our Partner and Let your vehicle make money for you. </p>
+      <a href="#partner" class="details-btn">Details</a>
+</div>
+    
+    <!-- Suggestion 6 -->
+    <div class="suggestion-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7iHdKdz1kCsrnVLQtN-xJIBB5UomJtYN9Pg&s" alt="Zippzapp Daily-Mail" />
+      <h3>ZippZapp Daily-Mail</h3>
+      <p>Comes with Daily and Subscription Model.</p>
+        <a href="#daily-mail" class="details-btn">Details</a>
+</div>    
+  </div>
+</section>
+  
+  <h2 style="text-align:center; color:#004d40; margin-bottom:1rem;">Share Rides, Save Costs, Go Green</h2>
+ 
+   <!-- Offer a Ride Section -->
+<section id="offer-ride">
+  <div class="offer-ride-container">
+    
+    <!-- Left Side Image -->
+    <div class="offer-ride-image">
+      <img src="https://www.shutterstock.com/image-vector/road-trip-car-happy-people-600nw-2521262713.jpg" alt="Offer Ride">
+    </div>
+
+    <!-- Right Side Content -->
+    <div class="offer-ride-content">
+      <h2>Drive Your Route, Earn on Every Seat.</h2>
+      <p>Extra Income (Without Becoming a Commercial Driver)<br>No Commercial License Needed.<br>Cost Sharing on Every Trip.<br>Smart Matching & Easy Bookings</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSftNyLgMzWvz5lvofRK5Pva3PqAw7wjMAqKc0Mf5eaWbuk7CA/viewform?usp=dialog" 
+         class="offer-btn">Offer Ride</a>
+    </div>
+  </div>
+</section>
+  
+  <!-- Request a Ride Section -->
+<section id="request-ride">
+  <div class="request-ride-container">
+    
+    <!-- Left Side Content -->
+    <div class="request-ride-content">
+      <h2>Best Traveling Experience at affordable price</h2>
+      <p>Calculate your Fare.<br>Faster than buses.<br> Flexible and Convenience.<br> Community based matching.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfsvoXX4TRLlB82mQ0m2zlZ_uqk-wht9FAy_-bfAloBRWeGxw/viewform?usp=dialog" 
+         class="request-btn">Request Ride</a>
+    </div>
+
+    <!-- Right Side Image -->
+    <div class="request-ride-image">
+      <img src="https://media.istockphoto.com/id/1908801863/vector/man-requests-taxi-ride-by-phone-cab-mobile-app-illustration-hand-drawn-composition-with.jpg?s=612x612&w=0&k=20&c=a5vj3LzeiMm5UNVhyUyXFO9Bk12_e1367Mi_bjZsK10=" alt="Request Ride">
+    </div>
+  </div>
+</section>
+      
+       <!-- Offer a Ride Section -->
+<section class="offer-ride">
+  <div class="offer-ride-container">
+    
+    <!-- Left Side Image -->
+    <div class="offer-ride-image">
+      <img src="https://www.shutterstock.com/image-vector/quality-test-satisfaction-concept-customers-600nw-2028412160.jpg" alt="Offer Ride">
+    </div>
+
+    <!-- Right Side Content -->
+    <div class="offer-ride-content">
+      <h2>Trust who you travel with</h2>
+      <p>We take the time to get to know each of our members and partners. We check reviews, profiles, and IDs, so you know who you're travelling with and can book your ride at ease on our secure platform.</p>
+      <a href="https://drive.google.com/file/d/1S_UVeElgE5e8laJ93FbTk092-JFC9dtL/view?usp=sharing" target="_blank",
+         class="offer-btn">Learn More</a>
+    </div>
+  </div>
+</section>
+  
+   <!-- Wrapper container -->
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+
+  <!--Calculator----> 
+  <section id="calculator">
+   <div style="flex: 1; padding: 20px;"> 
+  <div class="calculator">
+    <h2>Trip Cost Calculator</h2>
+    <label for="distance">Distance (km):</label>
+    <input type="number" id="distance" placeholder="Enter distance">
+
+    <label for="passengers">Number of Passengers:</label>
+    <input type="number" id="passengers" placeholder="Enter passengers">
+    <label for="luggage">Luggage Weight (kg):</label>
+    <input type="number" id="luggage" placeholder="Enter luggage weight">
+
+    <button onclick="calculateCost()">Calculate</button>
+
+    <div id="result" class="result"></div>
+  </div>
+     
+     <!-- Info Content -->
+  <div style="flex: 1; padding: 20px;">
+    <h2>How to use calculator</h2>
+    <ul>
+      <li>Car owner is also counted as passanger.</li>
+      <li>Petrol cost get shared with the number of passangers.</li>
+      <li>Road toll get shared with the number of passangers.</li>
+      <li>Vehicle Maintenance Cost is 0.5rs/km. </li>
+      <li>Luggage cost is a seperate cost and got added, if applied.(Luggage upto 10kgs have no charge, beyond 10kgs 20rs on every kgs of weight).</li>
+      <li>*If the destination is not same , calculate seperate cost with 3.80rs/km.</li>
+    </ul>
+  </div>
+</div>
+    </div>
+  </section>
+   <br><br>
+    
+<!--zippzapp daily mail-->
+<section id="daily-mail">
+    <div class="hero-text">
+      <h2>Zippzapp-Daily Mail</h2>
+      <p>Every Day, Traveling to same route like work place, school-college. Currently Active Jharkhand Location only.</p>
+      
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRviEuZEJ0adqawDCioXShp-5lYPc5fTZu9dpKXWAW8gQ52w/viewform?usp=sharing&ouid=111189369859071576024">
+        <button class="btn-primary">Bike monthly subscription</button>
+      </a>
+      <br><br>
+       <a href="https://docs.google.com/forms/d/e/1FAIpQLSej2nXmXgSQo4TMJAa_eeSrHprZw9BThpLLsf3DsbyElkHXoQ/viewform?usp=dialog">
+        <button class="btn-primary">Car monthly subscription</button>
+      </a>
+  </section>
+    <!-- Extra Features Section -->
+<section style="background: #ffffff; padding: 2rem 5%; border-radius: 10px; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+    
+    <div>
+      <i class="fas fa-ticket-alt" style="font-size: 2rem; color: #00bcd4; margin-bottom: 0.5rem;"></i>
+      <h3 style="color: #004d40;">Daily Ride</h3>
+      <p style="color: #555; font-size: 0.95rem;">
+        Currently Daily Ride option available for Jharkhand only, From Ranchi to Jamshedpur and other districts.
+      </p>
+    </div>
+    <div>
+      <i class="fas fa-id-card" style="font-size: 2rem; color: #00bcd4; margin-bottom: 0.5rem;"></i>
+      <h3 style="color: #004d40;">Subscription Model</h3>
+      <p style="color: #555; font-size: 0.95rem;">
+       Monthly Subscription model is for fixed route and within the city route. For school going, college going or workplace.
+      </p>
+    </div>
+    <div>
+      <i class="fas fa-bolt" style="font-size: 2rem; color: #00bcd4; margin-bottom: 0.5rem;"></i>
+      <h3 style="color: #004d40;">ZippZapp-Daily Mail</h3>
+      <p style="color: #555; font-size: 0.95rem;">
+       zippzapp-daily mail provides daily ride service within fixed route. zippzapp-daily mail gurantee for the lowest price. Faster and smoother rides.
+      </p>
+    </div>
+  </div>
+</section>
+    <!-- Become Partner -->
+<section id="partner">
+  <div class="hero-container">
+    <!-- Left Image -->
+    <div class="hero-image">
+      <img src="https://t4.ftcdn.net/jpg/03/16/50/91/360_F_316509181_OGBCBKWsB83evjfg6Mv9A9wa0j78uGQ8.jpg" alt="ZippZapp Driver"> 
+      <!-- Replace with your own image -->
+    </div>
+
+    <!-- Right Text -->
+    <div class="hero-text">
+      <h1>Get Paid Weekly with ZippZapp</h1>
+      <p>Earn money on while moving around you city.Customer are from your daily route only  .</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4xLgUWjfQgNcHTftmmmuYrKkOpXgw4-7FKj2kcYGd62u5Bw/viewform" class="hero-btn">
+        Become a Partner
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits">
+  <div class="benefit">
+    <img src="https://www.pngfind.com/pngs/m/415-4153126_png-file-easy-money-icon-png-transparent-png.png" alt="Money Icon"> <!-- Replace with icon -->
+    <h3>Make Great Money</h3>
+    <p>Zippzapp subscription based model and other daily rides or shedules rides helps our partner to earn without depending on ride commission only.</p>
+  </div>
+  <div class="benefit">
+    <img src="https://i.pinimg.com/736x/09/13/6e/09136ecd5ab2b12382b8c5178eaa42f4.jpg" alt="Schedule Icon">
+    <h3>Set Your Own Schedule</h3>
+    <p>zippzapp provides various kind of services to the customers. our partner can pick their any service.</p>
+  </div>
+  <div class="benefit">
+    <img src="https://cdn-icons-png.flaticon.com/512/2343/2343619.png" alt="Easy Icon">
+    <h3>Signing Up is Easy</h3>
+    <p>Joining takes less than 5 minutes.Easy documentation process Start earning from the first day only.</p>
+  </div>
+</section>
+  <!-- Popular Routes Section -->
+<section id="popular-routes" style="padding:3rem 5%; background:#f9f9f9;">
+  <h2 style="text-align:center; color:#004d40; font-size:2rem; font-weight:700; margin-bottom:2rem;">
+    Popular Daily Ride Routes
+  </h2>
+
+  <div class="route-slider" style="max-width:900px; margin:auto; position:relative; overflow:hidden;">
+    <div class="route-track" style="display:flex; transition:transform 0.6s ease;">
+      
+      <!-- Card 1 -->
+      <div class="route-card" style="min-width:100%; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-radius:12px; overflow:hidden; background:#fff; text-align:center;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Green_City_Jamshedpur.jpg" style="width:100%; height:250px; object-fit:cover;">
+        <div style="padding:1rem;">
+          <h3 style="color:#004d40;">Ranchi → Jamshedpur</h3>
+          <p style="color:#00796b; font-weight:bold;">From ₹750</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="route-card" style="min-width:100%; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-radius:12px; overflow:hidden; background:#fff; text-align:center;">
+        <img src="https://peopledhanbad.com/wp-content/uploads/2024/03/IMG_7124-scaled.jpg" alt="Ranchi to Dhanbad" style="width:100%; height:250px; object-fit:cover;">
+        <div style="padding:1rem;">
+          <h3 style="color:#004d40;">Ranchi → Dhanbad</h3>
+          <p style="color:#00796b; font-weight:bold;">From ₹900</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="route-card" style="min-width:100%; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-radius:12px; overflow:hidden; background:#fff; text-align:center;">
+        <img src="https://indianmasterminds.com/wp-content/uploads/2022/05/WhatsApp-Image-2022-05-16-at-5.17.48-PM-scaled.jpeg" alt="Ranchi to Chaibasa" style="width:100%; height:250px; object-fit:cover;">
+        <div style="padding:1rem;">
+          <h3 style="color:#004d40;">Ranchi → Chaibasa</h3>
+          <p style="color:#00796b; font-weight:bold;">From ₹820</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow Buttons -->
+    <button onclick="prevRoute()" style="position:absolute; top:50%; left:10px; transform:translateY(-50%); background:#00bcd4; color:#fff; border:none; padding:0.6rem 1rem; border-radius:50%; cursor:pointer;">&#10094;</button>
+    <button onclick="nextRoute()" style="position:absolute; top:50%; right:10px; transform:translateY(-50%); background:#00bcd4; color:#fff; border:none; padding:0.6rem 1rem; border-radius:50%; cursor:pointer;">&#10095;</button>
+  </div>
+</section>
+
+<script>
+  const routeTrack = document.querySelector('.route-track');
+  const routeCards = document.querySelectorAll('.route-card');
+  let routeIndex = 0;
+
+  function showRoute(index) {
+    routeTrack.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function nextRoute() {
+    routeIndex = (routeIndex + 1) % routeCards.length;
+    showRoute(routeIndex);
+  }
+
+  function prevRoute() {
+    routeIndex = (routeIndex - 1 + routeCards.length) % routeCards.length;
+    showRoute(routeIndex);
+  }
+</script>
+  
+  <!-- Extra Features Section -->
+<section style="background: #ffffff; padding: 2rem 5%; border-radius: 10px; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: center;">
+    
+  <!-- Petrol Cost Estimator (Left) -->
+  <div style="flex: 2; min-width: 300px; background: #f9fafb; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+    <h2 style="text-align:center; color:#004d40;">⛽ Petrol Cost Estimator</h2>
+    <form id="petrol-form" style="margin-top: 1.5rem;">
+      <label>Mileage (km/litre):</label>
+      <input type="number" id="mileage" placeholder="e.g. 15" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;">
+
+      <label>Distance (km):</label>
+      <input type="number" id="distance" placeholder="e.g. 120" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;">
+
+      <label>Petrol Price (per litre):</label>
+      <input type="number" id="price" placeholder="e.g. 102" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #ccc;">
+
+      <button type="submit" style="background: #00bcd4; color: #fff; padding: 0.7rem; width: 100%; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">
+        Calculate Cost
+      </button>
+    </form>
+    <p id="petrol-result" style="text-align:center; margin-top: 1rem; font-weight: bold; color: #00796b;"></p>
+  </div>
+
+  <!-- Right Column -->
+  <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 20px;">
+
+    <!-- Contact Section -->
+    <div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); text-align:center;">
+      <h3>📞 Contact Us</h3>
+      <p>Email: <a href="mailto:gautam@zippzapp.in">gautam@zippzapp.in</a></p>
+      <p>WhatsApp: <a href="https://wa.me/917991123078" target="_blank">7991123078</a></p>
+      <a href="https://median.co/share/jrdnxo#apk" target="_blank" style="display:inline-block; background:#00796b; color:#fff; padding:0.5rem 1rem; border-radius:8px; text-decoration:none; margin-top:0.5rem;">
+        📲 Download Our App
+      </a>
+    </div>
+
+    <!-- Make Payment Section -->
+    <div style="background: #ffffff; padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); text-align:center;">
+      <h3>💳 Make a Payment</h3>
+      <p>UPI ID: <strong id="upi-id">7991123078@paxis</strong></p>
+      <button onclick="copyUPI()" style="background:#00796b; color:#fff; padding:0.5rem 1rem; border:none; border-radius:5px; cursor:pointer;">
+        📋 Copy
+      </button>
+      <div style="margin-top:1rem;">
+        <img src="your-qr-code.png" alt="UPI QR Code" style="max-width:150px; border:1px solid #ccc; border-radius:10px;">
+        <p style="font-size:0.85rem; color:#555; margin-top:0.5rem;">
+          Scan using Paytm, PhonePe, Google Pay, etc.
+        </p>
+      </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('petrol-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const mileage = parseFloat(document.getElementById('mileage').value);
+  const distance = parseFloat(document.getElementById('distance').value);
+  const price = parseFloat(document.getElementById('price').value);
+  
+  if (mileage > 0 && distance > 0 && price > 0) {
+    const cost = (distance / mileage) * price;
+    document.getElementById('petrol-result').textContent = `Estimated Cost: ₹${cost.toFixed(2)}`;
+  } else {
+    document.getElementById('petrol-result').textContent = 'Please enter valid values.';
+  }
+});
+
+function copyUPI() {
+  const upiID = document.getElementById("upi-id").innerText;
+  navigator.clipboard.writeText(upiID).then(() => {
+    alert("UPI ID copied to clipboard!");
+  });
+}
+</script>
+
+  
+  <!-- Testimonials Section -->
+<section id="testimonials" style="background:#f8f9fa; padding:4rem 5%;">
+  <h2 style="text-align:center; color:#004d40; margin-bottom:2rem; font-size:2rem; font-weight:700;">
+    What Our Riders Say
+  </h2>
+  
+  <div class="testimonial-slider" style="max-width:800px; margin:auto; position:relative; overflow:hidden; border-radius:15px; background:#ffffff; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+    <div class="testimonial-track" style="display:flex; transition:transform 0.8s ease-in-out;">
+      
+      <div class="testimonial" style="min-width:100%; padding:2rem; text-align:center;">
+        <p style="font-style:italic; color:#555;">"ZippZapp made my trip so affordable and comfortable! Highly recommended."</p>
+        <h4 style="margin-top:1rem; color:#004d40;">— Ramesh Kumar</h4>
+      </div>
+      
+      <div class="testimonial" style="min-width:100%; padding:2rem; text-align:center;">
+        <p style="font-style:italic; color:#555;">"Easy booking, friendly drivers, and on-time service. Loved the experience."</p>
+        <h4 style="margin-top:1rem; color:#004d40;">— Priya Sharma</h4>
+      </div>
+      
+      <div class="testimonial" style="min-width:100%; padding:2rem; text-align:center;">
+        <p style="font-style:italic; color:#555;">"Saved me so much money compared to public transport. Plus, it’s faster!"</p>
+        <h4 style="margin-top:1rem; color:#004d40;">— Ankit Verma</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.querySelector('.testimonial-track');
+  const testimonials = document.querySelectorAll('.testimonial');
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % testimonials.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }, 10000); // 10 seconds
+</script>
+  
+  <footer>
+    <div>
+      <h5>Quick Links</h5>
+      <a href="https://drive.google.com/file/d/1FFJFSypGpYCCLt-NYdffnEtWTd2HEk5C/view?usp=sharing" target="_blank">Indian Moter Act 1988</a><br>     
+      <a href="https://drive.google.com/file/d/1l_UlQy1obcB7mRKNotGMPs7qMq1KyDyL/view?usp=sharing" target="_blank">Ride offering guideline</a><br>
+      <a href="https://drive.google.com/file/d/10dki3mm2GYObHqBjFf21lCy5U-1tqM5W/view?usp=sharing" target="_blank">Ride Requesting Guideline</a><br>
+    </div>  
+    <div>
+    <h5>Zippzapp-Daily Mail</h5>
+      
+      <a href="#Daily-Ride">Daily Ride</a><br>
+      <a href="https://drive.google.com/file/d/1n3SpLVOlfQAbH054XszIBaXOBTyiguat/view?usp=sharing" target="_blank">Bike Monthly Subscription</a><br>
+    <a href="https://drive.google.com/file/d/1oviI-AdE6vnL14dtA7m31VV3hl2003qJ/view?usp=sharing" target="_blank">Car Monthly Subscription</a><br>
+    </div>   
+     <div>
+      <h5>Privacy & Policies</h5>
+      <a href="https://drive.google.com/file/d/1LolKioTjP3x52nZaDnigUvRPKrA6eCmP/view?usp=sharing" target="_blank">Partner program</a><br>
+      <a href="#how-it-works">How It Works</a><br>
+      <a href="#contact">Contact Us</a>
+    </div>  
+    <div>
+      <h5>Follow Us</h5>
+      <div class="social-links">
+  <a href="https://www.facebook.com/zippzapp" target="_blank" aria-label="Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+  <a href="https://www.instagram.com/zippzapp" target="_blank" aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.youtube.com/@zippzapp" target="_blank" aria-label="YouTube">
+    <i class="fab fa-youtube"></i>
+  </a>
+       <a href="https://x.com/zippzapp_india?t=Z0Kr8YGQB3lKho64Khge4w&s=09" target="_blank" aria-label="X.COM">
+    <i class="fab fa-X.COM"></i>
+  </a>  
+      </div>
+
+  </footer>
+<script>
+    function calculateCost() {
+      const distance = parseFloat(document.getElementById("distance").value) || 0;
+      const passengers = parseInt(document.getElementById("passengers").value) || 1;
+      const luggage = parseFloat(document.getElementById("luggage").value) || 0;
+
+      const costPerKm = 15;
+      const baseFare = (distance * costPerKm) / passengers;
+
+      let luggageCharge = 0;
+      if (luggage > 10) {
+        luggageCharge = (luggage - 10) * 20;
+      }
+
+      const totalCost = baseFare + luggageCharge;
+
+      document.getElementById("result").innerHTML =
+        `Per Passenger Cost: ₹${baseFare.toFixed(2)} <br>` +
+        `Luggage Charge: ₹${luggageCharge.toFixed(2)} <br>` +
+        `<hr>Total Payable: ₹${totalCost.toFixed(2)}`;
+    }
+  </script>
+  <!-- Lottie Script -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js">
+    </script>
+
+</body>
+</html>
