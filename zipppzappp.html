@@ -4,7 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZippZapp - Ride Sharing Made Easy</title>
   <meta name="google-site-verification" content="iYSyMGYFSxEsc5JD-hKhfYJgXfPbm0HefK-nX2OiAL4" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
@@ -452,6 +451,10 @@
       color: #222;
     }
   </style>
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
 
@@ -467,9 +470,31 @@
 </header>
   <section class="hero"> 
   <div class="hero-text">
-  <h2 style="text-align:center; color:#004d40; margin-bottom:2rem;">India's Smartest Ride Share</h2>
+    <h2 style="text-align:center; color:#004d40; margin-bottom:2rem;">
+      India's Smartest Ride Share
+    </h2>
+
+    <!-- Swiper Banner Slider -->
+    <div class="swiper mySwiper" style="width:100%; max-width:1000px; margin:auto; border-radius:12px; overflow:hidden;">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://ik.imagekit.io/kcteeuhtv/1%20(3).jpg?updatedAt=1758702794435" alt="slide 1" style="width:100%; display:block;"></div>
+
+        <div class="swiper-slide"><img src="https://ik.imagekit.io/kcteeuhtv/2%20(3).jpg?updatedAt=1758702867895" alt="slide 2" style="width:100%; display:block;"></div>
+        <div class="swiper-slide"><img src="https://ik.imagekit.io/kcteeuhtv/3%20(3).jpg?updatedAt=1758702935898" alt="slide 3" style="width:100%; display:block;"></div>
+        <div class="swiper-slide"><img src="https://ik.imagekit.io/kcteeuhtv/4%20(3).jpg?updatedAt=1758702920255" alt="slide 4" style="width:100%; display:block;"></div>
+       <div class="swiper-slide"><img src="https://ik.imagekit.io/kcteeuhtv/5%20(3).jpg?updatedAt=1758702900405" alt="slide 5" style="width:100%; display:block;"></div>
+        <div class="swiper-slide"><img src="https://ik.imagekit.io/kcteeuhtv/6%20(3).jpg?updatedAt=1758702850896" alt="slide 6" style="width:100%; display:block;"></div>
+        <div class="swiper-slide"><img src="https://ik.imagekit.io/kcteeuhtv/7%20(2).jpg?updatedAt=1758702833572" alt="slide 7" style="width:100%; display:block;"></div>
+        <div class="swiper-slide"><img src="https://ik.imagekit.io/kcteeuhtv/8%20(2).jpg?updatedAt=1758702814395" alt="slide 8" style="width:100%; display:block;"></div>
+      </div>
+
+      <!-- Pagination & Navigation -->
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
-  </section>
+  </div>
+</section> 
   
 <section class="suggestions">
   <h2>Suggestions</h2>
@@ -583,8 +608,7 @@
     </div>
   </div>
 </section>
-  
-   <!-- Wrapper container -->
+  <!-- Wrapper container -->
 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
 
   <!--Calculator----> 
@@ -627,7 +651,6 @@
     <div class="hero-text">
       <h2>Zippzapp-Daily Mail</h2>
       <p>Every Day, Traveling to same route like work place, school-college. Currently Active Jharkhand Location only.</p>
-      
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRviEuZEJ0adqawDCioXShp-5lYPc5fTZu9dpKXWAW8gQ52w/viewform?usp=sharing&ouid=111189369859071576024">
         <button class="btn-primary">Bike monthly subscription</button>
       </a>
@@ -635,6 +658,7 @@
        <a href="https://docs.google.com/forms/d/e/1FAIpQLSej2nXmXgSQo4TMJAa_eeSrHprZw9BThpLLsf3DsbyElkHXoQ/viewform?usp=dialog">
         <button class="btn-primary">Car monthly subscription</button>
       </a>
+    </div>
   </section>
     <!-- Extra Features Section -->
 <section style="background: #ffffff; padding: 2rem 5%; border-radius: 10px; margin-top: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
@@ -809,7 +833,7 @@
         📋 Copy
       </button>
       <div style="margin-top:1rem;">
-        <img src="your-qr-code.png" alt="UPI QR Code" style="max-width:150px; border:1px solid #ccc; border-radius:10px;">
+        <img src="https://ik.imagekit.io/kcteeuhtv/pat1.jpg?updatedAt=1758598938421" alt="UPI QR Code" style="max-width:150px; border:1px solid #ccc; border-radius:10px;">
         <p style="font-size:0.85rem; color:#555; margin-top:0.5rem;">
           Scan using Paytm, PhonePe, Google Pay, etc.
         </p>
@@ -915,9 +939,27 @@ function copyUPI() {
     <i class="fab fa-X.COM"></i>
   </a>  
       </div>
-
   </footer>
-<script>
+    <script>
+  var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    autoplay: {
+      delay: 4000, // 4 sec per slide
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    effect: "slide", // change to "fade" if you want fade banners
+  });
+</script>
+    
+     <script>
     function calculateCost() {
       const distance = parseFloat(document.getElementById("distance").value) || 0;
       const passengers = parseInt(document.getElementById("passengers").value) || 1;
@@ -939,6 +981,14 @@ function copyUPI() {
         `<hr>Total Payable: ₹${totalCost.toFixed(2)}`;
     }
   </script>
+    <script>
+  var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+    autoplay: { delay: 3000 },
+  });
+</script>
   <!-- Lottie Script -->
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js">
     </script>
